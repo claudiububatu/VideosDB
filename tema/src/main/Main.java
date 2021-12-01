@@ -176,10 +176,10 @@ public final class Main {
                     } else if (commandi.getCriteria().compareTo("longest") == 0) {
                         if (commandi.getSortType().compareTo("asc") == 0) {
                             result = resolvevideos.longestmovie(movieData, commandi.getFilters(),
-                                      0, commandi.getNumber());
+                                    0, commandi.getNumber());
                         } else {
                             result = resolvevideos.longestmovie(movieData, commandi.getFilters(),
-                                      1, commandi.getNumber());
+                                    1, commandi.getNumber());
                         }
                         print = fileWriter.writeFile(id, "message", result);
                         arrayResult.add(print);
@@ -208,10 +208,10 @@ public final class Main {
                     } else if (commandi.getCriteria().compareTo("longest") == 0) {
                         if (commandi.getSortType().compareTo("asc") == 0) {
                             result = resolvevideos.longestserial(serialData, commandi.getFilters(),
-                                     0, commandi.getNumber());
+                                    0, commandi.getNumber());
                         } else {
                             result = resolvevideos.longestserial(serialData, commandi.getFilters(),
-                                     1, commandi.getNumber());
+                                    1, commandi.getNumber());
                         }
                         print = fileWriter.writeFile(id, "message", result);
                         arrayResult.add(print);
@@ -283,28 +283,26 @@ public final class Main {
                     }
                     arrayResult.add(print);
                 } else if (commandi.getType().compareTo("search") == 0) {
-                    RecUser rec = new RecUser();
-                    ArrayList<String> res = null;
+                    result = "SearchRecommendation cannot be applied!";
+                    print = fileWriter.writeFile(id, "message", result);
+                    arrayResult.add(print);
+                } else if (commandi.getType().compareTo("favorite") == 0) {
+                    RecPremiumUser rec = new RecPremiumUser();
+                    String res = null;
                     for (User us : userData) {
                         if (us.getUsername().compareTo(commandi.getUsername()) == 0) {
-                            res = RecPremiumUser.search(movieData, serialData,
-                                    us, commandi.getGenre());
+                            res = rec.fav(movieData, serialData, userData, us);
                             break;
                         }
                     }
 
                     if (res != null) {
                         print = fileWriter.writeFile(id, "message",
-                                "SearchRecommendation result: " + res);
+                                "FavoriteRecommendation result: " + res);
                     } else {
                         print = fileWriter.writeFile(id, "message",
-                                "SearchRecommendation cannot be applied!");
+                                "FavoriteRecommendation cannot be applied!");
                     }
-
-                    arrayResult.add(print);
-                } else if (commandi.getType().compareTo("favorite") == 0) {
-                    result = "FavoriteRecommendation cannot be applied!";
-                    print = fileWriter.writeFile(id, "message", result);
                     arrayResult.add(print);
                 } else if (commandi.getType().compareTo("popular") == 0) {
                     result = "PopularRecommendation cannot be applied!";
