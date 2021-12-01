@@ -1,3 +1,5 @@
+@COPYRIGHT 2021 Bubatu Claudiu-Mihai, 313CA
+-------------------------------------------------------------------------------
 # Object Oriented Programming Course
 # VideosDB
 ## Implementare
@@ -43,5 +45,13 @@ dorit pentru fiecare program in parte.
   Toate metodele din QueryActors returneaza un String ce reprezinta output-ul
 dorit pentru fiecare program in parte.
 
-- In QueryUsers gasim metoda numofratings ce gaseste cei mai activi n
-utilizatori.
+- Pachetul recommendation contine clasele RecPremiumUser si RecUser.
+- In RecPremiumUser gasim metoda fav ce returneaza videoclipul intalnit
+cel mai des in lista de favorite a tuturor utilizatorilor.
+- In RecUser gasim metodele: standard si bestunseen:
+      1. standard - returneaza primul video nevazut de utilizator din baza
+     de date.
+      2. bestunseen - returneaza cel mai bun video nevizualizat de acel
+     utilizator.
+  Toate metodele din cele 2 clase returneazaz un String ce reprezinta
+output-ul dorit pentru fiecare program in parte.
